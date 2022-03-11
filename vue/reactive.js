@@ -16,6 +16,7 @@ function reactive(vm, data) {
             let flag;
             if (keys.includes(key)) {
                 flag = Reflect.set(target.$data, key, value)
+                // 触发更新
                 update(vm, key, value)
             } else {
                 flag = Reflect.set(target, key, value)

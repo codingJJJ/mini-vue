@@ -6,10 +6,10 @@ import { isElement, clearElementChildren } from "./utils"
  */
 function mount(el) {
     let element
-    if(isElement(el)) { // 当el是一个Element节点时 直接操作
+    if(isElement(el)) { // 当el是一个Element节点时 直接append
         element = el
     } else {
-        elStr = el.startWith('#') ? el : '#el'; // 处理挂载时候可能是文本不带#的app
+        elStr = el.startstWith('#') ? el : '#el'; // 处理挂载时候可能是文本不带#的app
         element = document.getElementById(el.elStr)
         if(!element) throw new Error(`can't find the id of element by ${el}`) 
     }
