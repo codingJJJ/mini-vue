@@ -1,4 +1,6 @@
-import { isFunction, doubleBracesReg, doubleBracesInnerReg } from "./utils";
+import { doubleBracesReg, doubleBracesInnerReg } from "./utils";
+import initEvent, {} from './initEvent'
+
 /**
  * Map池 用于关联 属性 与 dom等相关信息
  */
@@ -15,12 +17,13 @@ function initProps() {
 
     // 遍历所有节点
     vm.$doms.forEach(el => {
-        if (el.hasAttribute('@click')) {
-            const attr = el.getAttribute('@click');
-            el.removeAttribute('@click')
-            // 绑定事件
-            isFunction(vm.$methods?.[attr]) && el.addEventListener('click', vm.$methods[attr].bind(vm.$reactive))
-        }
+        initEvent(vm, el)
+        // if (el.hasAttribute('@click')) {
+        //     const attr = el.getAttribute('@click');
+        //     el.removeAttribute('@click')
+        //     // 绑定事件
+        //     typeof vm.$methods?.[attr] === 'function' && el.addEventListener('click', vm.$methods[attr].bind(vm.$reactive))
+        // }
 
         if (el.hasAttribute('v-if')) {
             const attr = el.getAttribute('v-if');
